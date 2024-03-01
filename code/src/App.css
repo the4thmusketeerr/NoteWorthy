@@ -1,0 +1,150 @@
+/* CSS styling for AuthForm.jsx */
+  
+
+.container {
+    display: flex;
+    height: 100vh;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+
+}
+
+.signupContainer{
+  display: flex;
+  height: 133vh;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: none !important; 
+}
+  
+
+  
+.right-section{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(67, 104, 80);
+}
+
+
+  .login-form {
+    width: 300px;
+  }
+  
+  .login-form .form-group {
+    margin-bottom: 20px;
+    width: 300px;
+  }
+  
+  /* .login-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(18, 55, 42) !important;
+    color: #fff;
+    cursor: pointer;
+  }
+   */
+.login-form button:hover {
+    /* background-color: #0056b3; */
+  }
+  
+.signTitle {
+    margin-bottom: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 900;
+    font-size: 35px;
+    color: black;
+}
+
+label{
+  font-family: 'DM Sans', sans-serif;
+  color: black;
+}
+
+.submit-button{
+    background-color: rgb(18, 55, 42) !important;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 0.906rem;
+    font-family: 'DM Sans', sans-serif;
+}
+
+
+.submit-button:hover{
+  background-color: rgb(72, 156, 127) !important
+}
+.label-name{
+    margin-bottom: 5px;
+}
+
+.remember-me{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    
+}
+
+.rememberMecheckBox{
+  height: 16px;
+}
+
+.ml-2{
+    margin-right: 5px;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.reroute{
+  margin-top: 10px;
+  font-family: 'DM Sans', sans-serif;
+  text-align: center;
+  color: black;
+}
+
+.forgot-password{
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.error-message{
+  font-size: 14px;
+  margin-bottom: -6px;
+  color: black;
+}
+
+.google-sign{
+  margin-top: -10px;
+  font-family: 'DM Sans', sans-serif ;
+}
+ 
+.submit-google{
+  margin-top: 10px;
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(138, 135, 135) !important;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+
+
+@media screen and (min-height: 600px) { 
+  /* CSS rules for screens with a minimum height of 519 pixels or screens higher than 519px*/
+
+}

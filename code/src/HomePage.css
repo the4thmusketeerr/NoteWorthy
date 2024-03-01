@@ -1,0 +1,59 @@
+ 
+
+.main-content{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 476px;
+  justify-content: center !important; /* Horizontally center items */
+  align-items: center !important;/* Vertically center items */
+  background-color: rgb(67, 104, 80);
+}
+
+.title{
+  font-size: 2.4rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 48px;
+  color: white;
+}
+
+.catchphrase{
+  font-family: 'DM Sans', sans-serif;
+  font-size: 19px;
+  color: white;
+}
+
+.buttons-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .oprt-buttons {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(18, 55, 42);
+    font-family: 'DM Sans', sans-serif;
+    color: #fff;
+  }
+  
+  /* .create-button {
+    background-color: #007bff;
+    color: #fff;
+  } */
+  
+  
+ .oprt-buttons:hover {
+    opacity: 0.8;
+  }
+  
+
+
+
+
+  
