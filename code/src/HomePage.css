@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  height: 476px;
+  height: 510px;
   justify-content: center !important; /* Horizontally center items */
   align-items: center !important;/* Vertically center items */
   background-color: rgb(67, 104, 80);

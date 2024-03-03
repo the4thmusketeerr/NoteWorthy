@@ -23,42 +23,6 @@ const AuthForm = () => {
 
 
   const db = getDatabase();
-
-  
-
-  
-  // const handleSignup = () => {
-  //   const navigate = useNavigate(); // Access navigate function from useNavigate
-  
-  //   createUserWithEmailAndPassword(auth, email, password)
-  //     .then((userCredential) => {
-  //       console.log("User created");
-        
-  //       const user = userCredential.user;
-        
-  //       // Store user data in the database
-  //       set(ref(db, `users/${user.uid}`), {
-  //         name: name,
-  //         email: email,
-  //         id: user.uid
-  //       })
-  //       .then(() => {
-  //         console.log("User data stored in database");
-          
-  //         // Navigate to the home route
-  //         navigate("/home");
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error storing user data:", error);
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       console.error("Error creating user:", errorMessage);
-  //     });
-  // };
-
      
   
 
