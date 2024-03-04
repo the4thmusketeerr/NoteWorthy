@@ -1,5 +1,13 @@
 /* CSS styling for AuthForm.jsx */
   
+.right-section{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 641px;
+}
 
 .container {
     display: flex;
@@ -10,7 +18,7 @@
 
 }
 
-.signupContainer{
+.signup-container{
   display: flex; 
   padding: 0 !important;
   margin: 0 !important;
@@ -19,15 +27,7 @@
   
 
   
-.right-section{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(67, 104, 80);
-    height: 641px;
-}
+
 
 
   .login-form {
@@ -65,10 +65,19 @@
 label{
   font-family: 'DM Sans', sans-serif;
   color: black;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
 .submit-button{
-    background-color: rgb(18, 55, 42) !important;
+    background-color: black !important;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -82,7 +91,7 @@ label{
 
 
 .submit-button:hover{
-  background-color: rgb(72, 156, 127) !important
+  background-color: #666 !important;
 }
 .label-name{
     margin-bottom: 5px;
@@ -126,6 +135,7 @@ label{
 .google-sign{
   margin-top: -10px;
   font-family: 'DM Sans', sans-serif ;
+  text-align: center;
 }
  
 .submit-google{
@@ -136,15 +146,21 @@ label{
   font-size: 16px;
   border-radius: 5px;
   border: none;
-  background-color: rgb(138, 135, 135) !important;
+  background-color: rgb(17, 17, 231) !important;
   color: #fff;
   cursor: pointer;
   margin-bottom: 20px;
 }
 
+.submit-google:hover{
+  background-color: rgb(114, 114, 224) !important;
+}
 
 
-@media screen and (min-height: 600px) { 
+
+@media screen and (max-height: 768px) { 
   /* CSS rules for screens with a minimum height of 519 pixels or screens higher than 519px*/
-
+  .signup-container{
+    margin-top: 70px;
+  }
 }

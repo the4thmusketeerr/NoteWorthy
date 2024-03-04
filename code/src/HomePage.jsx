@@ -2,26 +2,110 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import './HomePage.css'
-import Header from './Header';
-import Footer from './Footer';
+import { useState, useEffect } from 'react';
+import {nanoid} from 'nanoid';
+import NotesList from './components/NotesList';
+import Search from './components/Search';
+import Header from './components/Header'
 
 function HomePage () {
+
+  const [notes, setNotes] = useState([
+		{
+			id: nanoid(),
+			text: 'This is my first note!',
+			date: '15/04/2021',
+		},
+		{
+			id: nanoid(),
+			text: 'This is my second note!',
+			date: '21/04/2021',
+		},
+		{
+			id: nanoid(),
+			text: 'This is my third note!',
+			date: '28/04/2021',
+		},
+		{
+			id: nanoid(),
+			text: 'This is my new note!',
+			date: '30/04/2021',
+		},
+	]);
+
+	const [searchText, setSearchText] = useState('');
+
+	const [darkMode, setDarkMode] = useState(false);
+
+	useEffect(() => {
+		const savedNotes = JSON.parse(
+			localStorage.getItem('react-notes-app-data')
+		);
+
+		if (savedNotes) {
+			setNotes(savedNotes);
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem(
+			'react-notes-app-data',
+			JSON.stringify(notes)
+		);
+	}, [notes]);
+
+	const addNote = (text) => {
+		const date = new Date();
+		const newNote = {
+			id: nanoid(),
+			text: text,
+			date: date.toLocaleDateString(),
+		};
+		const newNotes = [...notes, newNote];
+		setNotes(newNotes);
+	};
+
+	const deleteNote = (id) => {
+		const newNotes = notes.filter((note) => note.id !== id);
+		setNotes(newNotes);
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
-    <Header/>
-    <main className='main-content'>
-      <h1 className='title'>NoteWorthy</h1>
-      <p className='catchphrase'>More Than Just Notes, It's Your Creative Spark.</p>
-      <div className='buttons-section'>
-        <a href="/create">
-          <button className="oprt-buttons">Create Note</button>
-        </a>
-        <a href="/view">
-          <button className="oprt-buttons">View Notes</button>
-        </a>
-      </div>
-    </main>
-    <Footer/>
+    <div className={`${darkMode && 'dark-mode'}`}>
+			<div className='container'>
+				<Header handleToggleDarkMode={setDarkMode} />
+				<Search handleSearchNote={setSearchText} />
+				<NotesList
+					notes={notes.filter((note) =>
+						note.text.toLowerCase().includes(searchText)
+					)}
+					handleAddNote={addNote}
+					handleDeleteNote={deleteNote}
+				/>
+			</div>
+		</div> 
     </>   
   );
 }

@@ -5,7 +5,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useHistory hook
-import "./App.css";
+import "./AuthForm.css";
 import {getAuth,createUserWithEmailAndPassword} from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database"; 
 import {auth} from '../src/config/Firebase'
