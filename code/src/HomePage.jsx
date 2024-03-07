@@ -95,7 +95,7 @@ function HomePage () {
     <>
     <div className={`${darkMode && 'dark-mode'}`}>
 			<div className='container'>
-				<Header handleToggleDarkMode={setDarkMode} />
+				<Header/>
 				<Search handleSearchNote={setSearchText} />
 				<NotesList
 					notes={notes.filter((note) =>

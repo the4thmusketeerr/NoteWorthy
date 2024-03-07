@@ -25,6 +25,23 @@ code {
   border-radius: 14px !important;
 }
 
+.headerLinks{
+	display: flex;
+}
+
+.headerLinks a{
+	text-decoration: none;
+    color: black;
+    font-size: 1.25rem;
+    font-family:'DM Sans', sans-serif;
+	margin-right: 20px;
+	justify-content: center;
+}
+
+.headerLinks a:hover{
+	color:rgb(255, 217, 0);
+}
+
 .dark-mode {
 	background-color: black;
 }

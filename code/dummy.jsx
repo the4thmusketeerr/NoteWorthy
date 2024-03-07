@@ -75,3 +75,34 @@ const db = firebase.firestore();
   //       console.error("Error creating user:", error);
   //     });
   // }
+
+
+
+
+
+
+  const handleLogin = async () => {
+    try {
+      event.preventDefault()
+      console.log(email, password); // Logging input values for debugging
+  
+      // Sign in the user with email and password
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  
+      // Extract the user object from the userCredential
+      const user = userCredential.user;
+  
+      // Construct the log object with the user's UID
+      const log = { uid: user.uid };
+  
+      // Display an alert to indicate successful login
+      alert("User logged in successfully");
+  
+      // Navigate to the "/homesc" route with the log object as state
+      navigate('/home', { state: log });
+    } catch (error) {
+      // Handle errors
+      console.error("Error logging in:", error.message);
+      // You can display error messages to the user or handle them in other ways
+    }
+  };

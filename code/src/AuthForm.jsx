@@ -6,7 +6,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useHistory hook
 import "./AuthForm.css";
-import {getAuth,createUserWithEmailAndPassword} from "firebase/auth";
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth";
 import { getDatabase, ref, set } from "firebase/database"; 
 import {auth} from '../src/config/Firebase'
 
@@ -55,33 +55,29 @@ const AuthForm = () => {
 }
 
 
+const handleLogin = (event) => {
+  event.preventDefault(); // Prevent default form submission behavior
+  console.log(email, password); // Logging input values for debugging
 
-
-const handleLogin = async () => {
-  try {
-    event.preventDefault()
-    console.log(email, password); // Logging input values for debugging
-
-    // Sign in the user with email and password
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-
-    // Extract the user object from the userCredential
-    const user = userCredential.user;
-
-    // Construct the log object with the user's UID
-    const log = { uid: user.uid };
-
-    // Display an alert to indicate successful login
-    alert("User logged in successfully");
-
-    // Navigate to the "/homesc" route with the log object as state
-    navigate('/home', { state: log });
-  } catch (error) {
-    // Handle errors
-    console.error("Error logging in:", error.message);
-    // You can display error messages to the user or handle them in other ways
-  }
+  // Sign in with email and password
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log("User logged in successfully:", user.uid);
+      navigate("/home");
+    })
+    .catch((error) => {
+      // Handle errors
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error("Error signing in:", errorMessage);
+      // You can display error messages to the user or handle them in other ways
+    });
 };
+
+
+
 
 
       
@@ -103,8 +99,8 @@ const handleLogin = async () => {
     <div className="container">
       <div className="right-section">
         <h2 className="signTitle">Let's get you back in</h2>
-        <form className="login-form">
-          <div className="form-group" onSubmit={handleLogin}>
+        <form className="login-form" onSubmit={handleLogin}>
+          <div className="form-group" >
             <label htmlFor="email" className="label-name" value={email} >Email address</label>
             <input
               type="email"
@@ -198,8 +194,6 @@ const handleLogin = async () => {
     </div>
   )
 }
-
-
 }
 
 
