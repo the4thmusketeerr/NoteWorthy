@@ -4,28 +4,50 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useHistory hook
+import { useNavigate} from "react-router-dom"; // 
 import "./AuthForm.css";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword,signInWithPopup,GoogleAuthProvider,} from "firebase/auth";
+import { getDatabase} from "firebase/database";
 import { auth } from "../src/config/Firebase";
 
 const AuthForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordErrors, setPasswordErrors] = useState([]);
 
   const db = getDatabase();
 
   const navigate = useNavigate();
   const handleSignup = () => {
-    event.preventDefault(); // Prevent default form submission behavior
+     event.preventDefault(); // Prevent default form submission behavior
+    
+
+    // Password validation
+    const errors = [];
+    if (password.length < 8) {
+      errors.push("Password must be at least 8 characters long.");
+    }
+    if (!password.match(/[A-Z]/)) {
+      errors.push("Password must contain at least one uppercase letter.");
+    }
+    if (!password.match(/[a-z]/)) {
+      errors.push("Password must contain at least one lowercase letter.");
+    }
+    if (!password.match(/\d/)) {
+      errors.push("Password must contain at least one digit.");
+    }
+    if (!password.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/)) {
+      errors.push("Password must contain at least one special character.");
+    }
+
+    if (errors.length > 0) {
+      setPasswordErrors(errors);
+      return; // Prevent form submission if password validation fails
+    }
+
     console.log(email, password); // Logging input values for debugging
+
 
     // Create user account with email and password
     return createUserWithEmailAndPassword(auth, email, password)
@@ -138,7 +160,7 @@ const AuthForm = () => {
               />
             </div>
             <div className="form-group d-flex justify-content-between align-items-center">
-              <a href="#" className="forgot-password">
+              <a href="/forgot-password" className="forgot-password">
                 Forgot Your Password?
               </a>
             </div>
@@ -204,6 +226,14 @@ const AuthForm = () => {
                 required
               />
             </div>
+            {passwordErrors.length > 0 && (
+            <ul className="error-list">
+              {passwordErrors.map((error, index) => (
+                <li key={index} className="error-message">{error}</li>
+              ))}
+            </ul>
+            )}
+
             <button type="submit" className="submit-button">
               Sign Up
             </button>
